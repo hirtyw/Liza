@@ -19,7 +19,7 @@ const startBackgroundMusic = async () => {
     await backgroundMusic.play();
     removeMusicStartListeners();
 
-    const targetVolume = 0.18;
+    const targetVolume = 0.072;
     const fadeDuration = 2400;
     const fadeStartedAt = performance.now();
 
