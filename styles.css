@@ -25,6 +25,8 @@ h1,h2,.hero-date,.hero-time,.footer-logo{font-family:"Actay Wide",Arial Black,Ar
 .hero-date{left:0}.hero-time{right:0}
 .dark{position:relative;background:#000;overflow:hidden}
 .grain{position:absolute;inset:0;background:url("assets/texture.png") center/cover;mix-blend-mode:difference;opacity:.2}
+.dress>.grain{background-size:2730px 1707px;background-position:-511px -41px}
+.ride>.grain{background-size:2730px 1707px;background-position:-511px -1032px}
 .dress{height:991px}
 .intro{position:absolute;z-index:2;top:116px;left:4.15%;right:4.3%;display:grid;grid-template-columns:1fr 1fr;gap:30px}
 .intro>div{max-width:647px;justify-self:end}
@@ -69,9 +71,10 @@ footer>div>p:last-child{font-size:20px;line-height:1.2}
   .hero-fade{position:absolute;z-index:2;left:0;right:0;top:418px;height:247px;background:linear-gradient(transparent,#000)}
   .hero-date,.hero-time{font-size:87px;line-height:1.26}.hero-date{top:517px;left:-11px}.hero-time{top:587px;right:-7px}
   .dress{height:970px}.intro{top:47px;left:20px;right:17px;display:flex;flex-direction:column;gap:20px}.intro>div{max-width:none}
+  .dress>.grain{background-size:1609px 1007px;background-position:-891px -78px}
   h2{font-size:36px}.intro p:last-child,.ride-copy p,.gallery-copy p:last-child{font-size:16px;margin-top:6px}
   .group-ten{left:-21px;top:294px;width:458px;height:auto}.band{left:-1px;top:668px;width:394px;height:302px}
-  .ride{height:756px;overflow:hidden}.ride-copy{top:64px;left:20px;width:356px}.horse{left:-25px;top:181px;width:554px;height:auto}
+  .ride{height:756px;overflow:hidden}.ride>.grain{background-size:1609px 1007px;background-position:-891px -61px}.ride-copy{top:64px;left:20px;width:356px}.horse{left:-25px;top:181px;width:554px;height:auto}
   .tear{left:-187px;bottom:0;width:820px;height:70px}
   .gallery{height:1525px}.gallery-copy{top:20px;left:20px;right:17px;display:flex;flex-direction:column;gap:20px}.gallery-copy>div{max-width:none}
   .photos{inset:228px 0 49px}.p1{left:0;top:0;width:393px;height:253px}.p2{left:20px;top:272px;width:167px;height:251px}
