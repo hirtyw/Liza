@@ -161,21 +161,27 @@ footer>div>p:last-child{font-size:20px;line-height:1.2}
 
 @media(max-width:600px){
   .brace{font-size:18px}.hero{height:665px}
+  .hero-blur{width:1500px;height:685px;top:-4px;left:calc(37.5% + 39.63px);transform:translateX(-50%)}
   .hero-art{width:1500px;height:685px;top:-3px;left:calc(37.5% + 39.63px)}
-  .hero h1{top:-20px;font-size:87px;line-height:.77;text-align:center;white-space:normal;width:100%}.hero h1 span{display:block}.hero h1 span+span{margin-top:18px}
-  .hero-label{top:135px;right:20px;font-size:18px}
+  .hero h1{inset:0;transform:none;width:100%;height:135px;font-size:87.164px;line-height:normal;text-align:center;white-space:normal}
+  .hero h1 span{position:absolute;left:calc(50% - 3.5px);top:-20px;display:block;transform:translateX(-50%);white-space:nowrap}
+  .hero h1 span+span{left:calc(50% - 3px);top:47px;margin:0}
+  .hero-label{top:135px;left:322px;right:auto;transform:translateX(-50%);font-size:18px}
   .hero-fade{position:absolute;z-index:2;left:0;right:0;top:418px;height:247px;background:linear-gradient(transparent,#000)}
-  .hero-date,.hero-time{font-size:87px;line-height:1.26}.hero-date{top:517px;left:-11px}.hero-time{top:587px;right:-7px}
+  .hero-date,.hero-time{font-size:87.164px;line-height:normal;transform:translateX(-50%)}
+  .hero-date{top:517px;left:124.5px}.hero-time{top:587px;left:277px;right:auto}
   .dress{height:970px}.intro{top:47px;left:20px;right:17px;display:flex;flex-direction:column;gap:20px}.intro>div{max-width:none}
   .dress>.grain{background-size:1609px 1007px;background-position:-891px -78px}
   h2{font-size:36px}.intro p:last-child,.ride-copy p,.gallery-copy p:last-child{font-size:16px;margin-top:6px}
   .group-ten{left:-21px;top:294px;width:458px;height:auto}.band{left:-1px;top:668px;width:394px;height:302px}
-  .ride{height:756px;overflow:hidden}.ride>.grain{background-size:1609px 1007px;background-position:-891px -61px}.ride-copy{top:64px;left:20px;width:356px}.horse{left:-25px;top:181px;width:554px;height:auto}
+  .ride{height:756px;overflow:hidden}.ride>.grain{background-size:1609px 1007px;background-position:-891px -61px}.ride-copy{top:64px;left:20px;width:356px}.horse{left:-76px;top:154px;width:481px;height:auto}
   .tear{left:-187px;bottom:0;width:820px;height:70px}
   .gallery{height:1525px}.gallery-copy{top:20px;left:20px;right:17px;display:flex;flex-direction:column;gap:20px}.gallery-copy>div{max-width:none}
   .photos{inset:228px 0 49px}.p1{left:0;top:0;width:393px;height:253px}.p2{left:20px;top:272px;width:167px;height:251px}
   .framed{left:168px;top:241px;width:246px;height:308px}.framed img:last-child{left:39px;top:31px;width:167px;height:251px}
-  .p4{left:19px;top:547px;width:357px;height:414px}.p5{left:0;top:980px;width:187px;height:268px}.p6{left:187px;top:980px;width:206px;height:268px}
+  .p4{left:19px;top:499.1px;width:357px;height:634.9px;object-fit:fill;clip-path:inset(47.9px 0 173px 0)}
+  .p5{left:-17.33px;top:956.04px;width:228.14px;height:324.79px;object-fit:fill;clip-path:inset(23.96px 23.81px 32.83px 17.33px)}
+  .p6{display:none}
   footer{height:280px}footer>div{top:0;left:0;right:0;display:block;text-align:center}footer>div>p:last-child{font-size:16px;line-height:1.2;width:258px;margin:11px auto 0}
-  .footer-logo{top:139px;font-size:87px;line-height:.77;text-align:center;white-space:normal;width:100%}.footer-logo span{display:block}.footer-logo span+span{margin-top:18px}
+  .footer-logo{display:none}
 }
