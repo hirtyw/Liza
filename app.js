@@ -3,6 +3,10 @@ const loaderCount = document.querySelector(".loader-count");
 const backgroundMusic = document.querySelector("#background-music");
 let loaderFinished = false;
 let musicIsStarting = false;
+let musicAudioContext;
+let musicSource;
+let musicGain;
+let webAudioUnavailable = false;
 
 const removeMusicStartListeners = () => {
   document.removeEventListener("pointerdown", startBackgroundMusic, true);
@@ -13,26 +17,57 @@ const startBackgroundMusic = async () => {
   if (!backgroundMusic || musicIsStarting || !backgroundMusic.paused) return;
 
   musicIsStarting = true;
-  backgroundMusic.volume = 0;
 
   try {
+    const AudioContextClass =
+      window.AudioContext || window.webkitAudioContext;
+
+    if (AudioContextClass && !webAudioUnavailable) {
+      try {
+        if (!musicAudioContext) {
+          musicAudioContext = new AudioContextClass();
+          musicSource = musicAudioContext.createMediaElementSource(backgroundMusic);
+          musicGain = musicAudioContext.createGain();
+          musicGain.gain.value = 0;
+          musicSource.connect(musicGain);
+          musicGain.connect(musicAudioContext.destination);
+        }
+
+        await musicAudioContext.resume();
+      } catch {
+        webAudioUnavailable = true;
+      }
+    }
+
+    backgroundMusic.volume = musicGain ? 1 : 0;
     await backgroundMusic.play();
     removeMusicStartListeners();
 
-    const targetVolume = 0.072;
+    const targetVolume = 0.03;
     const fadeDuration = 2400;
-    const fadeStartedAt = performance.now();
 
-    const raiseVolume = (now) => {
-      const progress = Math.min((now - fadeStartedAt) / fadeDuration, 1);
-      backgroundMusic.volume = targetVolume * progress;
+    if (musicGain && musicAudioContext) {
+      const fadeStartedAt = musicAudioContext.currentTime;
+      musicGain.gain.cancelScheduledValues(fadeStartedAt);
+      musicGain.gain.setValueAtTime(0, fadeStartedAt);
+      musicGain.gain.linearRampToValueAtTime(
+        targetVolume,
+        fadeStartedAt + fadeDuration / 1000,
+      );
+    } else {
+      const fadeStartedAt = performance.now();
 
-      if (progress < 1) {
-        window.requestAnimationFrame(raiseVolume);
-      }
-    };
+      const raiseVolume = (now) => {
+        const progress = Math.min((now - fadeStartedAt) / fadeDuration, 1);
+        backgroundMusic.volume = targetVolume * progress;
 
-    window.requestAnimationFrame(raiseVolume);
+        if (progress < 1) {
+          window.requestAnimationFrame(raiseVolume);
+        }
+      };
+
+      window.requestAnimationFrame(raiseVolume);
+    }
   } catch {
     musicIsStarting = false;
   }
