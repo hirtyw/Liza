@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap');
+
+@font-face{
+  font-family:"Actay Wide";
+  src:url("assets/fonts/ActayWide-Bold.otf") format("opentype");
+  font-style:normal;
+  font-weight:700;
+  font-display:swap;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;background:#000;color:#fff;font-family:"Inter Tight",Arial,sans-serif}
+body{overflow-x:hidden}
+main{width:100%}
+img{display:block}
+p,h1,h2{margin:0}
+h1,h2,.hero-date,.hero-time,.footer-logo{font-family:"Actay Wide",Arial Black,Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:normal}
+.brace{font-size:32px;opacity:.6}
+.hero{height:700px;position:relative;overflow:hidden;background:#060606}
+.hero-blur{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-art{position:absolute;z-index:3;width:129.3%;height:851px;left:50%;top:-77px;transform:translateX(-50%);object-fit:cover}
+.hero h1{position:absolute;z-index:2;top:-47px;left:50%;transform:translateX(-50%);font-size:clamp(120px,14vw,202px);white-space:nowrap;line-height:1.26}
+.hero-label{position:absolute;z-index:4;top:162px;right:5.2%;opacity:1}
+.hero-date,.hero-time{position:absolute;z-index:3;top:557px;font-size:clamp(110px,11.8vw,170px);line-height:1.26;white-space:nowrap}
+.hero-date{left:0}.hero-time{right:0}
+.dark{position:relative;background:#000;overflow:hidden}
+.grain{position:absolute;inset:0;background:url("assets/texture.png") center/cover;mix-blend-mode:difference;opacity:.2}
+.dress{height:991px}
+.intro{position:absolute;z-index:2;top:116px;left:4.15%;right:4.3%;display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.intro>div{max-width:647px;justify-self:end}
+h2{font-size:58px;line-height:1.1}
+.intro p:last-child,.ride-copy p,.gallery-copy p:last-child{font-size:20px;line-height:1.2;margin-top:12px}
+.dress-collage{position:absolute;inset:0}
+.group-ten{position:absolute;z-index:2;left:2.3%;top:319px;width:49.6%;height:auto}
+.band{position:absolute;z-index:1;right:0;top:440px;width:49.8%;height:551px;object-fit:cover;object-position:bottom}
+.ride{height:689px;overflow:visible;z-index:2}
+.ride-copy{position:absolute;z-index:2;left:4.1%;top:185px;width:38.4%}
+.horse{position:absolute;z-index:5;left:calc(50% - 360px);top:-320px;width:1063px;height:auto}
+.tear{position:absolute;bottom:-1px;left:-1%;width:103%;height:126px}
+.gallery{height:1816px;position:relative;background:#fff;color:#090909;overflow:hidden}
+.gallery-copy{position:absolute;top:57px;left:4.1%;right:4.2%;display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.gallery-copy>div{max-width:649px;justify-self:end}.gallery-copy h2{color:#2c2c2c}
+.photos{position:absolute;inset:280px 0 86px}
+.photos img{position:absolute;object-fit:cover}
+.p1{left:4.15%;top:0;width:60.6%;height:561px}.p2{right:0;top:0;width:33.7%;height:728px}
+.framed{position:absolute;left:38.75%;top:542px;width:28.9%;height:570px}
+.framed img:first-child{inset:0;width:100%;height:100%}.framed img:last-child{left:15.6%;top:49px;width:74.5%;height:465px}
+.p4{left:0;top:591px;width:41.5%;height:859px}.p5{left:43.3%;top:1086px;width:21.8%;height:364px}.p6{right:4.2%;top:748px;width:29.5%;height:702px}
+footer{height:284px;position:relative;background:#fff;color:#000;overflow:hidden}
+footer>div{position:absolute;top:0;left:3.7%;right:4.3%;display:flex;justify-content:space-between;align-items:flex-start}
+footer>div>p:last-child{font-size:20px;line-height:1.2}
+.footer-logo{position:absolute;top:104px;left:50%;transform:translateX(-50%);font-size:clamp(120px,14vw,202px);white-space:nowrap}
+
+@media(min-width:1600px){
+  .hero{height:772px}.hero-art{width:101.1%;height:887px;top:-17px}
+  .hero h1{font-size:202px}.hero-date,.hero-time{top:620px;font-size:170px}.hero-date{left:12.55%}.hero-time{right:12.45%}.hero-label{right:16.3%}
+  .dress{height:991px}.intro{left:12.55%;right:12.7%}.dress-collage{max-width:1440px;left:50%;transform:translateX(-50%)}
+  .ride{height:689px}.ride-copy{left:12.55%;width:28.8%}
+  .gallery{height:2344px}.gallery-copy{left:12.55%;right:12.55%;top:75px}.photos{inset:315px 0 96px}
+  .p1{left:4.2%;width:60.6%;height:748px}.p2{width:33.7%;height:970px}
+  .p4{top:788px;width:41.5%;height:1145px}.framed{top:723px;height:760px}.framed img:last-child{height:620px;top:65px}.p5{top:1448px;height:485px}.p6{top:997px;height:936px}
+}
+
+@media(max-width:600px){
+  .brace{font-size:18px}.hero{height:665px}
+  .hero-art{width:1500px;height:685px;top:-3px;left:calc(37.5% + 39.63px)}
+  .hero h1{top:-20px;font-size:87px;line-height:.77;text-align:center;white-space:normal;width:100%}.hero h1 span{display:block}.hero h1 span+span{margin-top:18px}
+  .hero-label{top:135px;right:20px;font-size:18px}
+  .hero-fade{position:absolute;z-index:2;left:0;right:0;top:418px;height:247px;background:linear-gradient(transparent,#000)}
+  .hero-date,.hero-time{font-size:87px;line-height:1.26}.hero-date{top:517px;left:-11px}.hero-time{top:587px;right:-7px}
+  .dress{height:970px}.intro{top:47px;left:20px;right:17px;display:flex;flex-direction:column;gap:20px}.intro>div{max-width:none}
+  h2{font-size:36px}.intro p:last-child,.ride-copy p,.gallery-copy p:last-child{font-size:16px;margin-top:6px}
+  .group-ten{left:-21px;top:294px;width:458px;height:auto}.band{left:-1px;top:668px;width:394px;height:302px}
+  .ride{height:756px;overflow:hidden}.ride-copy{top:64px;left:20px;width:356px}.horse{left:-25px;top:181px;width:554px;height:auto}
+  .tear{left:-187px;bottom:0;width:820px;height:70px}
+  .gallery{height:1525px}.gallery-copy{top:20px;left:20px;right:17px;display:flex;flex-direction:column;gap:20px}.gallery-copy>div{max-width:none}
+  .photos{inset:228px 0 49px}.p1{left:0;top:0;width:393px;height:253px}.p2{left:20px;top:272px;width:167px;height:251px}
+  .framed{left:168px;top:241px;width:246px;height:308px}.framed img:last-child{left:39px;top:31px;width:167px;height:251px}
+  .p4{left:19px;top:547px;width:357px;height:414px}.p5{left:0;top:980px;width:187px;height:268px}.p6{left:187px;top:980px;width:206px;height:268px}
+  footer{height:280px}footer>div{top:0;left:0;right:0;display:block;text-align:center}footer>div>p:last-child{font-size:16px;line-height:1.2;width:258px;margin:11px auto 0}
+  .footer-logo{top:139px;font-size:87px;line-height:.77;text-align:center;white-space:normal;width:100%}.footer-logo span{display:block}.footer-logo span+span{margin-top:18px}
+}
