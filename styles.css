@@ -230,3 +230,99 @@ footer>div>p:last-child{font-size:20px;line-height:1.2}
   .footer-logo span{position:absolute;left:49.873%;top:140px;display:block;transform:translateX(-50%);white-space:nowrap}
   .footer-logo span+span{left:50%;top:207px;margin:0}
 }
+
+/* Безопасная CSS-анимация: контент никогда не скрывается скриптом. */
+.hero h1{
+  animation:hero-copy-in .9s cubic-bezier(.2,.7,.2,1) both;
+}
+.hero-label{
+  animation:hero-copy-in .75s .18s cubic-bezier(.2,.7,.2,1) both;
+}
+.hero-date{
+  animation:hero-copy-in .8s .28s cubic-bezier(.2,.7,.2,1) both;
+}
+.hero-time{
+  animation:hero-copy-in .8s .38s cubic-bezier(.2,.7,.2,1) both;
+}
+.hero-art{
+  animation:hero-art-float 6s 1s ease-in-out infinite;
+  will-change:transform;
+}
+.hero-blur{
+  animation:hero-background-drift 16s ease-in-out infinite alternate;
+  will-change:transform;
+}
+.horse{
+  animation:horse-float 5.5s .9s ease-in-out infinite;
+  will-change:transform;
+}
+
+@keyframes hero-copy-in{
+  from{opacity:.7;filter:blur(3px)}
+  to{opacity:1;filter:blur(0)}
+}
+@keyframes hero-art-float{
+  0%,100%{transform:translateX(-50%) translateY(0)}
+  50%{transform:translateX(-50%) translateY(-7px)}
+}
+@keyframes hero-background-drift{
+  from{transform:translateX(-50%) scale(1)}
+  to{transform:translateX(-50%) scale(1.018)}
+}
+@keyframes horse-float{
+  0%,100%{transform:translate3d(0,0,0) rotate(0)}
+  50%{transform:translate3d(0,-8px,0) rotate(.2deg)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero h1,
+  .hero-label,
+  .hero-date,
+  .hero-time,
+  .hero-art,
+  .hero-blur,
+  .horse{
+    animation:none;
+    filter:none;
+  }
+  .hero-art,
+  .hero-blur{
+    transform:translateX(-50%);
+  }
+}
+
+/* Класс добавляется только в момент появления элемента в окне.
+   Без JavaScript весь контент остаётся видимым. */
+.content-reveal{
+  animation:content-reveal-in .72s cubic-bezier(.2,.7,.2,1) both;
+}
+.photo-card.content-reveal,
+.footer-logo.content-reveal{
+  animation-name:content-reveal-soft;
+  animation-duration:.65s;
+}
+
+@keyframes content-reveal-in{
+  from{
+    opacity:.72;
+    transform:translate3d(0,18px,0);
+    filter:blur(2px);
+  }
+  to{
+    opacity:1;
+    transform:translate3d(0,0,0);
+    filter:blur(0);
+  }
+}
+@keyframes content-reveal-soft{
+  from{opacity:.65}
+  to{opacity:1}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .content-reveal,
+  .photo-card.content-reveal,
+  .footer-logo.content-reveal{
+    animation:none;
+  }
+}
