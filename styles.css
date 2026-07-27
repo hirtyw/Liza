@@ -43,10 +43,23 @@ h2{font-size:58px;line-height:1.1}
 .gallery-copy{position:absolute;top:57px;left:4.1%;right:4.2%;display:grid;grid-template-columns:1fr 1fr;gap:30px}
 .gallery-copy>div{max-width:649px;justify-self:end}.gallery-copy h2{color:#2c2c2c}
 .photos{position:absolute;inset:280px 0 86px}
-.photos img{position:absolute;object-fit:cover}
+.photo-card{--frame-inset:-24px;position:absolute;z-index:1;isolation:isolate;outline:0;cursor:pointer;transition:transform .25s ease,filter .25s ease}
+.photo-card::before{content:"";position:absolute;inset:var(--frame-inset);z-index:0;pointer-events:none;background:#810f0f;clip-path:var(--frame-shape);opacity:0;transform:scale(.94) rotate(var(--frame-turn,0deg));transition:opacity .2s ease,transform .28s ease}
+.photo-card .photo-image{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover}
+.photos .photo-card:hover{z-index:40;transform:translateY(-8px) scale(1.018);filter:drop-shadow(0 14px 18px rgba(0,0,0,.28))}
+.photos .photo-card:hover::before{opacity:1;transform:scale(1) rotate(var(--frame-turn,0deg))}
+@media(prefers-reduced-motion:reduce){
+  .photo-card,.photo-card::before{transition:none}
+}
+.p1{--frame-shape:polygon(2% 7%,13% 1%,29% 4%,45% 0,63% 5%,78% 2%,97% 8%,100% 35%,96% 56%,100% 83%,88% 98%,62% 95%,43% 100%,21% 96%,3% 99%,6% 72%,0 48%)}
+.p2{--frame-turn:-.35deg;--frame-shape:polygon(5% 1%,25% 4%,43% 0,66% 3%,94% 1%,99% 19%,96% 39%,100% 61%,95% 82%,98% 97%,70% 94%,51% 100%,28% 96%,2% 99%,5% 72%,1% 52%,4% 28%)}
+.framed{--frame-turn:.4deg;--frame-shape:polygon(8% 0,28% 4%,45% 1%,65% 5%,89% 2%,100% 14%,96% 35%,100% 58%,95% 77%,99% 94%,78% 97%,61% 100%,38% 96%,15% 100%,1% 88%,5% 67%,0 46%,6% 23%)}
+.p4{--frame-turn:-.25deg;--frame-shape:polygon(2% 4%,19% 0,39% 3%,58% 1%,82% 5%,98% 1%,96% 22%,100% 43%,97% 65%,100% 91%,83% 98%,61% 95%,44% 100%,25% 96%,4% 99%,7% 75%,0 54%,4% 29%)}
+.p5{--frame-turn:.3deg;--frame-shape:polygon(7% 2%,31% 5%,51% 0,73% 4%,96% 1%,100% 25%,96% 47%,99% 70%,94% 98%,73% 95%,54% 100%,32% 96%,3% 99%,5% 74%,1% 51%,4% 28%)}
+.p6{--frame-turn:-.45deg;--frame-shape:polygon(1% 9%,20% 3%,39% 6%,57% 1%,78% 4%,97% 0,95% 24%,100% 42%,96% 64%,99% 88%,89% 100%,65% 96%,48% 99%,26% 95%,5% 98%,8% 78%,0 59%,5% 34%)}
 .p1{left:4.15%;top:0;width:60.6%;height:561px}.p2{right:0;top:0;width:33.7%;height:728px}
-.framed{position:absolute;left:38.75%;top:542px;width:28.9%;height:570px}
-.framed img:first-child{inset:0;width:100%;height:100%}.framed img:last-child{left:15.6%;top:49px;width:74.5%;height:465px}
+.framed{left:43.2639%;top:591px;width:21.5278%;height:465px}
+.framed .photo-image{inset:0;width:100%;height:100%}
 .p4{left:0;top:591px;width:41.5%;height:859px}.p5{left:43.3%;top:1086px;width:21.8%;height:364px}.p6{right:4.2%;top:748px;width:29.5%;height:702px}
 footer{height:284px;position:relative;background:#fff;color:#000;overflow:hidden}
 footer>div{position:absolute;top:0;left:3.7%;right:4.3%;display:flex;justify-content:space-between;align-items:flex-start}
@@ -78,8 +91,8 @@ footer>div>p:last-child{font-size:20px;line-height:1.2}
   .photos{inset:0}
   .p1{left:4.1667%;top:280px;width:60.625%;height:561px}
   .p2{left:66.3194%;right:auto;top:280px;width:33.6806%;height:728px}
-  .framed{left:38.75%;top:822px;width:28.8889%;height:570px}
-  .framed img:last-child{left:15.625%;top:49px;width:74.5192%;height:465px}
+  .framed{left:43.2639%;top:871px;width:21.5278%;height:465px}
+  .framed .photo-image{inset:0;width:100%;height:100%}
   .p4{left:43.2639%;top:1366px;width:21.8056%;height:364px}
   .p5{left:0;top:871px;width:41.4583%;height:859px}
   .p6{left:66.3194%;right:auto;top:1028px;width:29.5139%;height:702px}
@@ -114,8 +127,8 @@ footer>div>p:last-child{font-size:20px;line-height:1.2}
   .photos{inset:0}
   .p1{left:4.2266%;top:315px;width:60.6339%;height:747.633px}
   .p2{left:auto;right:0;top:315px;width:33.6863%;height:970.166px}
-  .framed{left:38.8042%;top:1037.54px;width:28.8839%;height:759.869px}
-  .framed img:last-child{left:15.6247%;top:65.32px;width:74.5201%;height:619.893px}
+  .framed{left:43.3172%;top:1102.86px;width:21.5241%;height:619.893px}
+  .framed .photo-image{inset:0;width:100%;height:100%}
   .p4{left:43.3172%;top:1762.75px;width:21.8018%;height:485.25px}
   .p5{left:.0609%;top:1102.86px;width:41.4627%;height:1144.82px}
   .p6{left:66.3688%;right:auto;top:1312.16px;width:29.5088%;height:935.839px}
@@ -156,8 +169,8 @@ footer>div>p:last-child{font-size:20px;line-height:1.2}
   .photos{inset:300px 0 40px}
   .p1{left:0;top:0;width:100%;height:400px}
   .p2{left:5%;right:auto;top:420px;width:42%;height:400px}
-  .framed{left:42%;top:390px;width:60%;height:460px}
-  .framed img:last-child{left:16%;top:40px;width:68%;height:380px}
+  .framed{left:51.6%;top:430px;width:40.8%;height:380px}
+  .framed .photo-image{inset:0;width:100%;height:100%}
   .p4{left:5%;top:850px;width:90%;height:580px}
   .p5{left:0;top:1450px;width:48%;height:400px}
   .p6{left:48%;right:auto;top:1450px;width:52%;height:400px}
@@ -201,11 +214,14 @@ footer>div>p:last-child{font-size:20px;line-height:1.2}
   .photos{inset:228px 0 49px}
   .p1{left:0;top:0;width:100%;height:253px}
   .p2{left:5.089%;top:272px;width:42.494%;height:251px}
-  .framed{left:42.748%;top:241px;width:62.595%;height:308px}
-  .framed img:last-child{left:15.854%;top:31px;width:67.886%;height:251px}
-  .p4{left:4.835%;top:499.1px;width:90.84%;height:634.9px;object-fit:fill;clip-path:inset(47.9px 0 173px 0)}
-  .p5{left:-4.41%;top:956.04px;width:58.05%;height:324.79px;object-fit:fill;clip-path:inset(23.96px 10.437% 32.83px 7.596%)}
-  .p6{display:block;left:45.435%;top:971.88px;width:62.588%;height:308.23px;object-fit:fill;clip-path:inset(8.12px 12.818% 32.11px 11.562%)}
+  .framed{left:52.672%;top:272px;width:42.494%;height:251px}
+  .framed .photo-image{inset:0;width:100%;height:100%}
+  .p4{left:4.835%;top:547px;width:90.84%;height:414px}
+  .p4 .photo-image{object-position:50% 21.7%}
+  .p5{left:0;top:980px;width:47.583%;height:268px}
+  .p5 .photo-image{inset:auto;width:122%;height:121.19%;left:-9.27%;top:-8.94%;object-fit:fill;clip-path:inset(7.377% 10.434% 10.108% 7.598%)}
+  .p6{display:block;left:52.672%;top:980px;width:47.328%;height:268px}
+  .p6 .photo-image{inset:auto;width:132.24%;height:115.01%;left:-15.29%;top:-3.03%;object-fit:fill;clip-path:inset(2.634% 12.817% 10.417% 11.562%)}
 
   footer{height:280px}
   footer>div{top:0;left:0;right:0;display:block;text-align:center}
