@@ -1,6 +1,50 @@
 const loaderRoot = document.documentElement;
 const loaderCount = document.querySelector(".loader-count");
+const backgroundMusic = document.querySelector("#background-music");
 let loaderFinished = false;
+let musicIsStarting = false;
+
+const removeMusicStartListeners = () => {
+  document.removeEventListener("pointerdown", startBackgroundMusic, true);
+  document.removeEventListener("keydown", startBackgroundMusic, true);
+};
+
+const startBackgroundMusic = async () => {
+  if (!backgroundMusic || musicIsStarting || !backgroundMusic.paused) return;
+
+  musicIsStarting = true;
+  backgroundMusic.volume = 0;
+
+  try {
+    await backgroundMusic.play();
+    removeMusicStartListeners();
+
+    const targetVolume = 0.18;
+    const fadeDuration = 2400;
+    const fadeStartedAt = performance.now();
+
+    const raiseVolume = (now) => {
+      const progress = Math.min((now - fadeStartedAt) / fadeDuration, 1);
+      backgroundMusic.volume = targetVolume * progress;
+
+      if (progress < 1) {
+        window.requestAnimationFrame(raiseVolume);
+      }
+    };
+
+    window.requestAnimationFrame(raiseVolume);
+  } catch {
+    musicIsStarting = false;
+  }
+};
+
+if (backgroundMusic) {
+  document.addEventListener("pointerdown", startBackgroundMusic, {
+    capture: true,
+    passive: true,
+  });
+  document.addEventListener("keydown", startBackgroundMusic, true);
+}
 
 const finishLoader = () => {
   if (loaderFinished) return;
